@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const authRouter = require('./router/auth.router');
+const teacherRouter = require('./router/teacher.router');
+const classroomRrouter = require('./router/classroom.router');
 require('dotenv').config()
 
 const app = express()
@@ -18,8 +20,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRouter);
+app.use('/api/teachers', teacherRouter);
+app.use('/api/classrooms', classroomRrouter);
 connectDB();
 
 app.listen(PORT,()=>{
-    console.log(`Server is runing${PORT}`)
+    console.log(`Server is runing ${PORT}`)
 })
